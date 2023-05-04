@@ -1,0 +1,269 @@
+PageLayoutExample: #Main Interface
+
+<PageLayoutExample@PageLayout>:
+    # BoxLayoutLogIn:
+    BoxLayout0thPage:
+    BoxLayoutFirstPage:
+    BoxLayoutExample:
+    
+
+<BoxLayoutLogIn>:
+    Label: 
+        text: "Log In"
+    Button:
+        text: "Enter App"
+
+<BoxLayout0thPage>: 
+    canvas.before:
+        Color:
+            rgba: (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    orientation: "vertical"
+    AnchorLayoutExample:
+        size_hint: "1dp", None
+        height: "80dp"
+    BoxLayout: 
+        padding: ("20dp", "20dp", "20dp", "20dp")
+        Button:
+            size_hint: None, "1dp"
+            width: "80dp"
+            text:"Homing \nSet Up"
+            background_color: 0.0666, 0.796, 0.9607, 1
+        BoxLayout:
+            AnchorLayout:
+                anchor_x: "left"
+                anchor_y: "center"
+                BoxLayout:
+                    padding:("20dp", "20dp", "20dp", "20dp")
+                    BoxLayout:
+                        orientation: "vertical"
+                        Label:
+                            text: "Click to Select Controller"
+                        Button:
+                            text: "DCM30010 MODEL"
+                    BoxLayout:
+                        orientation: "vertical"
+                        Label: 
+                            text: "Address"
+                        Label:
+                            text: "IP Address"
+                    BoxLayout:
+                        orientation: "vertical"
+                        Label: 
+                            text: "Revision"
+                        Label: 
+                            text: "Version 1.0"
+
+
+# We can use parent class using the @ sign
+<BoxLayoutFirstPage>:
+    canvas.before:
+        Color:
+            rgba: (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    orientation: "vertical"  
+    AnchorLayoutExample:
+        size_hint: "1dp", None
+        height: "80dp"
+    BoxLayout: 
+        padding: ("20dp", "20dp", "20dp", "20dp")
+        Button:
+            size_hint: None, "1dp"
+            width: "80dp"
+            text:"Homing \nSet Up"
+            background_color: 0.0666, 0.796, 0.9607, 1
+        BoxLayout:
+            orientation: "vertical"
+            GridLayout: 
+                cols: 4
+                padding: ("20dp", "20dp", "20dp", "20dp")
+                spacing: (0, "10dp")
+                Label: 
+                    text: "Motor Position (TP)"
+                Label: 
+                    text: "12864"
+                Label: 
+                    text: "Axis Status"
+                Label: 
+                    text: "IDLE"
+                BoxLayout:
+                    orientation: "vertical"
+                    Switch:
+                        on_active: root.on_active_switch_one(self)
+                    Label:
+                        text: "Reverse Limit Switch"
+                        color: root.switch_one_text_color
+                BoxLayout: 
+                    orientation: "vertical"
+                    Switch:
+                        on_active: root.on_active_switch_two(self)
+                    Label: 
+                        text: "Home Switch"
+                        color: root.switch_two_text_color
+                BoxLayout: 
+                    orientation: "vertical"
+                    Switch:
+                        on_active: root.on_active_switch_three(self) 
+                    Label: 
+                        text: "Forward Limit Switch"
+                        color: root.switch_three_text_color
+                BoxLayout: 
+                    orientation: "vertical"
+                    Switch:
+                        on_active: root.on_active_switch_four(self) 
+                    Label:
+                        text: "Motor Off"
+                        color: root.switch_four_text_color
+                Button:
+                    text: "Stop"
+                    on_press: root.on_button_click_stop()
+                Button: 
+                    text: "Motor Off"
+                    on_press: root.on_button_click_motor_off()
+                Button: 
+                    text: "Servo Here"
+                    on_press: root.on_button_click_servo()
+                Button: 
+                    text: "Home Axis"
+                    on_press: root.on_button_click_home_axis()
+
+            GridLayout: 
+                cols: 3
+                Label: 
+                    text: "Axis Position"
+                Slider:
+                    min: 0
+                    max: 100
+                    on_value: root.on_slider_value_one(self, self.value)
+                Label: 
+                    text: root.slider_one_text
+                    font_name: "fonts/Lcd.ttf"
+                    font_size: "40dp"
+                Label: 
+                    text: "Set Axis Position"
+                Slider: 
+                    min: 0
+                    max: 100
+                    on_value: root.on_slider_value_two(self, self.value)
+                Label: 
+                    text: root.slider_two_text
+                    font_name: "fonts/Lcd.ttf"
+                    font_size: "40dp"
+
+
+
+        
+   
+
+<AnchorLayoutExample>:
+    # right, left, center for x 
+    # bottom, top, center for y 
+    anchor_x: "center"
+    anchor_y: "top"
+    BoxLayout:
+        size_hint: "1dp", None
+        height: "80dp"
+        Image:
+            source: "C:/Users/luish/Desktop/LOGO-BIOMEDICA.png"
+            allow_strecth: True
+            keep_ratio: True
+        Label:
+            text: "CNC Machine Software"
+        Button:
+            text: "Disconnect"
+            background_color: 0.98, 0.619, 0.239 # Orangish    
+        Button:
+            text: "E-Stop"
+            background_color: 1, 0, 0, 1 # Red Color
+    
+<BoxLayoutExample>:
+    canvas.before:
+        Color:
+            rgba: (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    orientation: "vertical"  
+    AnchorLayoutExample:
+        size_hint: "1dp", None
+        height: "80dp"
+    BoxLayout:
+        padding: ("20dp", "20dp", "20dp", "20dp")
+        Button:
+            size_hint: None, "1dp"
+            width: "80dp"
+            text:"Cut to \nLength"
+            background_color: 0.0666, 0.796, 0.9607, 1
+        GridLayout:
+            cols: 4
+            Label: 
+                text: "Number of Cuts"
+                font_size: "20dp"
+            BoxLayout:
+                orientation: "vertical"
+                Label: 
+                    text: root.quantity
+                    font_name: "fonts/Lcd.ttf"
+                    font_size: "50dp"
+                    color: 0.0666, 0.796, 0.9607, 1
+                Button:
+                    size_hint: "1dp", None
+                    height: "50dp"
+                    text: "+1"
+                    on_press: root.on_button_click_add()
+                Button:
+                    size_hint: "1dp", None
+                    height: "50dp" 
+                    text: "-1"
+                    on_press: root.on_button_click_minus()
+            Label: 
+                text: "Enter Length"
+                font_size: "20dp"
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: root.text_input_str
+                TextInput:
+                    id: my_text_input
+                    text: "Counts"
+                    multiline: False
+                    on_text_validate: root.on_text_validate(self)
+                
+            BoxLayout:
+                orientation: "vertical"
+                padding:("20dp", "20dp", "20dp", "20dp")
+                spacing: 10
+                ToggleButton:
+                    text: "OFF"
+                    on_state: root.on_toggle_button(self)
+                Button: 
+                    text: "Cancel Operation"
+            BoxLayout:
+                orientation: "vertical"
+                Label: 
+                    text: root.slider_value
+                    font_name: "fonts/Lcd.ttf"
+                    font_size: "50dp"
+                Slider:
+                    min: 0
+                    max: 100
+                    on_value: root.on_slider_value(self, self.value)
+                    disabled: root.slider_status
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    size_hint: "1dp", "0.2"
+                    text: "Status"
+                    font_size: "40dp"
+                Label: 
+                    text: root.status
+                    font_name: "fonts/Lcd.ttf"
+                    font_size: "50dp"
+                    color: root.status_color
+                
+            
+    
