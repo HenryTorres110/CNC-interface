@@ -1,0 +1,43 @@
+
+<BoxLayout0thPage>: 
+    canvas.before:
+        Color:
+            rgba: (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    orientation: "vertical"
+    AnchorLayoutExample:
+        size_hint: "1dp", None
+        height: "80dp"
+    BoxLayout: 
+        padding: ("20dp", "20dp", "20dp", "20dp")
+        Button:
+            size_hint: None, "1dp"
+            width: "80dp"
+            text:"Homing \nSet Up"
+            background_color: 100/255, 105/255 , 250/255, 1
+        BoxLayout:
+            AnchorLayout:
+                anchor_x: "left"
+                anchor_y: "center"
+                BoxLayout:
+                    padding:("20dp", "20dp", "20dp", "20dp")
+                    BoxLayout:
+                        orientation: "vertical"
+                        Label:
+                            text: "Click to Select Controller"
+                        Button:
+                            text: "DCM30010 MODEL"
+                    BoxLayout:
+                        orientation: "vertical"
+                        Label: 
+                            text: "Address"
+                        Label:
+                            text: "IP Address"
+                    BoxLayout:
+                        orientation: "vertical"
+                        Label: 
+                            text: "Revision"
+                        Label: 
+                            text: "Version 1.0"

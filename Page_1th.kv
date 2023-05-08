@@ -1,0 +1,95 @@
+<BoxLayoutFirstPage>:
+    canvas.before:
+        Color:
+            rgba: (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    orientation: "vertical"  
+    AnchorLayoutExample:
+        size_hint: "1dp", None
+        height: "80dp"
+    BoxLayout: 
+        padding: ("20dp", "20dp", "20dp", "20dp")
+        Button:
+            size_hint: None, "1dp"
+            width: "80dp"
+            text:"Homing \nSet Up"
+            background_color: 100/255, 105/255 , 250/255, 1
+        BoxLayout:
+            orientation: "vertical"
+            GridLayout: 
+                cols: 4
+                padding: ("20dp", "20dp", "20dp", "20dp")
+                spacing: (0, "10dp")
+                Label: 
+                    text: "Motor Position (TP)"
+                Label: 
+                    text: "12864"
+                Label: 
+                    text: "Axis Status"
+                Label: 
+                    text: "IDLE"
+                BoxLayout:
+                    orientation: "vertical"
+                    Switch:
+                        on_active: root.on_active_switch_one(self)
+                    Label:
+                        text: "Reverse Limit Switch"
+                        color: root.switch_one_text_color
+                BoxLayout: 
+                    orientation: "vertical"
+                    Switch:
+                        on_active: root.on_active_switch_two(self)
+                    Label: 
+                        text: "Home Switch"
+                        color: root.switch_two_text_color
+                BoxLayout: 
+                    orientation: "vertical"
+                    Switch:
+                        on_active: root.on_active_switch_three(self) 
+                    Label: 
+                        text: "Forward Limit Switch"
+                        color: root.switch_three_text_color
+                BoxLayout: 
+                    orientation: "vertical"
+                    Switch:
+                        on_active: root.on_active_switch_four(self) 
+                    Label:
+                        text: "Motor Off"
+                        color: root.switch_four_text_color
+                Button:
+                    text: "Stop"
+                    on_press: root.on_button_click_stop()
+                Button: 
+                    text: "Motor Off"
+                    on_press: root.on_button_click_motor_off()
+                Button: 
+                    text: "Servo Here"
+                    on_press: root.on_button_click_servo()
+                Button: 
+                    text: "Home Axis"
+                    on_press: root.on_button_click_home_axis()
+
+            GridLayout: 
+                cols: 3
+                Label: 
+                    text: "Axis Position"
+                Slider:
+                    min: 0
+                    max: 100
+                    on_value: root.on_slider_value_one(self, self.value)
+                Label: 
+                    text: root.slider_one_text
+                    font_name: "fonts/Lcd.ttf"
+                    font_size: "40dp"
+                Label: 
+                    text: "Set Axis Position"
+                Slider: 
+                    min: 0
+                    max: 100
+                    on_value: root.on_slider_value_two(self, self.value)
+                Label: 
+                    text: root.slider_two_text
+                    font_name: "fonts/Lcd.ttf"
+                    font_size: "40dp"

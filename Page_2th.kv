@@ -1,0 +1,84 @@
+<BoxLayoutExample>:
+    canvas.before:
+        Color:
+            rgba: (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    orientation: "vertical"  
+    AnchorLayoutExample:
+        size_hint: "1dp", None
+        height: "80dp"
+    BoxLayout:
+        padding: ("20dp", "20dp", "20dp", "20dp")
+        Button:
+            size_hint: None, "1dp"
+            width: "80dp"
+            text:"Cut to \nLength"
+            background_color: 100/255, 105/255 , 250/255, 1
+        GridLayout:
+            cols: 4
+            Label: 
+                text: "Number of Cuts"
+                font_size: "20dp"
+            BoxLayout:
+                orientation: "vertical"
+                Label: 
+                    text: root.quantity
+                    font_name: "fonts/Lcd.ttf"
+                    font_size: "50dp"
+                    color: 0.0666, 0.796, 0.9607, 1
+                Button:
+                    size_hint: "1dp", None
+                    height: "50dp"
+                    text: "+1"
+                    on_press: root.on_button_click_add()
+                Button:
+                    size_hint: "1dp", None
+                    height: "50dp" 
+                    text: "-1"
+                    on_press: root.on_button_click_minus()
+            Label: 
+                text: "Enter Length"
+                font_size: "20dp"
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: root.text_input_str
+                TextInput:
+                    id: my_text_input
+                    text: "Counts"
+                    multiline: False
+                    on_text_validate: root.on_text_validate(self)
+                
+            BoxLayout:
+                orientation: "vertical"
+                padding:("20dp", "20dp", "20dp", "20dp")
+                spacing: 10
+                ToggleButton:
+                    text: "OFF"
+                    on_state: root.on_toggle_button(self)
+                Button: 
+                    text: "Cancel Operation"
+            BoxLayout:
+                orientation: "vertical"
+                Label: 
+                    text: root.slider_value
+                    font_name: "fonts/Lcd.ttf"
+                    font_size: "50dp"
+                Slider:
+                    min: 0
+                    max: 100
+                    on_value: root.on_slider_value(self, self.value)
+                    disabled: root.slider_status
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    size_hint: "1dp", "0.2"
+                    text: "Status"
+                    font_size: "40dp"
+                Label: 
+                    text: root.status
+                    font_name: "fonts/Lcd.ttf"
+                    font_size: "50dp"
+                    color: root.status_color
