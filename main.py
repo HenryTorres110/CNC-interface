@@ -11,7 +11,6 @@ class AnchorLayoutExample(AnchorLayout):
     pass
 
 
-
 class CNC_MACHINEApp(App):
     pass
 

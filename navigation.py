@@ -3,6 +3,7 @@ from kivy.uix.screenmanager import ScreenManager
 
 class NavigationScreenManager(ScreenManager):
     screen_stack = []
+    rgb_rounded_button = (1, 1, 1, 1)
 
     def push(self, screen_name):
         if screen_name not in self.screen_stack:
@@ -18,3 +19,4 @@ class NavigationScreenManager(ScreenManager):
             self.transition.direction = "right"
             self.current = screen_name
             print("Presionado pop")
+        
