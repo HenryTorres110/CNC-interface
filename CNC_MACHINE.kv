@@ -1,8 +1,74 @@
 #:import Page_0th Page_0th
 #:import Page_1th Page_1th
 #:import Page_2th Page_2th
+#:import navigation navigation
 
-BoxLayoutExample: #Main Interface
+
+
+MyScreenManager: #Main Interface
+
+
+<MyScreenManager@NavigationScreenManager>:
+    Screen:
+        name: "Screen_1"
+        BoxLayout: # Menu Page
+            orientation: "vertical"
+            Label: 
+                text: "Home"
+                font_size: "40dp"
+            BoxLayout: 
+                orientation: "horizontal"
+                Label: 
+                BoxLayout: 
+                    orientation: "vertical"
+                    Button:
+                        text: "Controller Selection"
+                        on_press: root.push("Page_0th")
+                    Button:
+                        text: "Set Up"
+                        on_press: root.push("Page_1th")
+                    Button: 
+                        text: "Linear Stage"
+                        on_press: root.push("Page_2th")
+                Label: 
+
+    Screen:
+        name: "Page_0th"
+        BoxLayout: 
+            orientation: "vertical"
+            ActionBar: 
+                ActionView:
+                    ActionPrevious:
+                        title: "Controller Selection"
+                        on_release: root.pop()
+        
+            BoxLayout0thPage:
+    Screen:
+        name: "Page_1th"
+        BoxLayout: 
+            orientation: "vertical"
+            ActionBar: 
+                ActionView:
+                    ActionPrevious:
+                        title: "Set Up"
+                        on_release: root.pop()
+        
+            BoxLayoutFirstPage:
+    Screen:
+        name: "Page_2th"
+        BoxLayout: 
+            orientation: "vertical"
+            ActionBar: 
+                ActionView:
+                    ActionPrevious:
+                        title: "Linear Stage"
+                        on_release: root.pop()
+                        # app_icon: "Imagen"
+                        # app_icon_height: "28dp"
+        
+            BoxLayoutExample:
+        
+
 
 <PageLayoutExample@PageLayout>:
     # BoxLayoutLogIn:
@@ -10,7 +76,7 @@ BoxLayoutExample: #Main Interface
     BoxLayoutFirstPage:
     BoxLayoutExample:
     
-    
+
 <AnchorLayoutExample>:
     # right, left, center for x 
     # bottom, top, center for y 
@@ -27,11 +93,12 @@ BoxLayoutExample: #Main Interface
             text: "CNC Machine Software"
         Button:
             text: "Disconnect"
-            background_color: 255/255, 252/255, 153/255   
+            background_color: 255/255, 252/255, 253/255   
         Button:
             text: "E-Stop"
             background_color: 153/255, 85/255, 238/255, 1 
     
+
 
                 
             
